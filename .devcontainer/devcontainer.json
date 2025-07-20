@@ -1,0 +1,59 @@
+{
+	"name": "Python3",
+	"build": {
+		"dockerfile": "Dockerfile"
+	},
+	"mounts": [
+		"source=${localEnv:HOME}/.ssh/,target=/home/vscode/.ssh/,type=bind,readonly",
+		"source=ops-bashhistory,target=/commandhistory,type=volume"
+	],
+
+	// Features to add to the dev container. More info: https://containers.dev/features.
+	"features": {
+        "ghcr.io/devcontainers/features/common-utils:2":{
+            "installZsh": "true",
+			"configureZshAsDefaultShell": "true",
+            "username": "vscode",
+            "userUid": "1000",
+            "userGid": "1000",
+            "upgradePackages": "true"
+        }
+    },
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	// "postCreateCommand": "pip3 install --user -r requirements.txt",
+	"postCreateCommand": "pip install git+ssh://bitbucket.biscrum.com:7999/devops/lagoon_client.git@develop",
+	// Configure tool-specific properties.
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-python.python",
+				"ms-python.vscode-pylance",
+				"kevinrose.vsc-python-indent",
+				"redhat.vscode-yaml",
+				"esbenp.prettier-vscode",
+				"aaron-bond.better-comments",
+				"charliermarsh.ruff"
+			],
+			"settings": {
+				"terminal.integrated.defaultProfile.linux": "zsh",
+				"terminal.integrated.profiles.linux": {
+					"zsh": {
+						"path": "zsh"
+					}
+				},
+				"python.defaultInterpreterPath": "/usr/local/bin/python",
+				"[python]": {
+					"editor.formatOnSave": true,
+					"editor.defaultFormatter": "charliermarsh.ruff"
+				}
+			}
+		}
+	},
+
+	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	"remoteUser": "vscode"
+}
