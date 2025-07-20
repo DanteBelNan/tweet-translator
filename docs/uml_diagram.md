@@ -49,9 +49,5 @@ classDiagram
     TweetTranslatorApp --|> OpenAIClient : uses
     TweetTranslatorApp "1" *-- "1" Logger : has a
 
-    note "TwitterClient represents interaction with the Twitter/X API (reading and writing)." as N1
-    TwitterClient .. N1
-
-    note "OpenAIClient represents interaction with the OpenAI API for translation." as N2
-    OpenAIClient .. N2
-```
+    note for TwitterClient "TwitterClient represents interaction with the Twitter/X API (reading and writing).";
+    note for OpenAIClient "OpenAIClient represents interaction with the OpenAI API for translation.";
