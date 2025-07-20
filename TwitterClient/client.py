@@ -9,11 +9,11 @@ class client:
         if bearer_token:
             self.bearer_token = bearer_token
         else:
-            self.bearer_token = os.getenv("BEARER_TOKEN")
+            self.bearer_token = os.getenv("TWITTER_BEARER_TOKEN")
         if base_url:
             self.base_url = base_url
         else:
-            self.base_url = os.getenv("BASE_URL")
+            self.base_url = os.getenv("TWITTER_BASE_URL")
             
             
         self.session = requests.session()
