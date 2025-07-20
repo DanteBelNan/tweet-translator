@@ -1,4 +1,4 @@
-from .Clientt import Client
+from .Client import Client
 
 class Users(Client):
     
