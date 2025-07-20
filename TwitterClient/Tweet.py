@@ -1,4 +1,4 @@
-from .Client import Client
+from .Clientt import Client
 
 class Tweets(Client):
     def get_tweet(self,
